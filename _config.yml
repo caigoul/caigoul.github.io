@@ -42,9 +42,9 @@ comments:
   gittalk: true
   gittalk_clientId: d0051f6fa903c0b241c3
   gittalk_clientSecret: 18f4b73161776d3b9a9c8a4960a3b738572e9226
-  gittalk_repo: PID000.github.io
-  gittalk_owner: PID000
-  gittalk.admin: PID000
+  gittalk_repo: 'PID000.github.io'
+  gittalk_owner: 'PID000'
+  gittalk_admin: 'PID000'
 
 
 # MathJax 公式支持 by Ray-Eldath
