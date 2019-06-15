@@ -105,6 +105,11 @@
         <div id="disqus_thread"></div>
     </section>
     {% endif %}
+    {% if site.comments.gittalk %}
+    <section class="post-footer-item comment">
+      <div id="gitalk-container"></div>        
+    </section>
+    {% endif %}
   </section>
 
   {% include footer.html %}
@@ -146,7 +151,6 @@
 
   {% if site.comments.gittalk %}
   <div class="gitalk">
-    <div id="gitalk-container"></div>
     <script type="text/javascript">
         const gitalk = new Gitalk({
             clientID: '{{ site.comments.gittalk_clientId }}',
