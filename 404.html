@@ -1,16 +1,17 @@
 ---
 layout: default
-description: "Sorry, Page Not Found :("
+description: "这里什么都没有。"
+header-img: /img/head/404.jpg
 ---
 
 {% include header.html %}
 
-<header class="g-banner np-banner {{ site.postPatterns | prepend: 'post-pattern-' }}" data-theme="{{ site.theme-color }}">
+<header class="g-banner np-banner {{ site.postPatterns | prepend: 'post-pattern-' }}" data-theme="{{ site.theme-color }}"
+style="{% if page.header-img %}background: url({{ page.header-img | relative_url }}) no-repeat center center; background-size: cover;{% endif %}"
+>
     <div class="post-wrapper">
         <h1>404</h1>
         <span class="subheading">{{ page.description }}</span>
         <a href="{{ site.nav.home }}" class="btn">Back to home</a>
     </div>
 </header>
-
-
