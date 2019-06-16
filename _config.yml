@@ -2,7 +2,7 @@
 title: 'PID000的笔记本'
 description: '罗廷忠，是条咸鱼，什么都不会'
 keyword: 'PID000, LuoTingZhong, LTZ, 个人博客'
-url: '' # your host
+url: 'PID000.github.io' # your host
 
 # when build blog on server, if you don't need baseurl, you should leave this value blank.
 # 在服务器上建站时，如果你不需要子域名，请将这一格留空
