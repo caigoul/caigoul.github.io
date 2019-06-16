@@ -32,17 +32,17 @@ server.listen(3000, () => console.log("listening port 3000"));
 
 ## `http.Server`的事件
 
-> [request](http://nodejs.cn/api/http.html#http_event_request)
+- [`request`](http://nodejs.cn/api/http.html#http_event_request)
 
-最常用的事件，当客户端请求到来时触发该事件，提供`res`和`req`两个参数，代表请求和相应信息。
+  最常用的事件，当客户端请求到来时触发该事件，提供`res`和`req`两个参数，代表请求和相应信息。
 
-> [connect](http://nodejs.cn/api/http.html#http_event_connect_1)
+- [`connect`](http://nodejs.cn/api/http.html#http_event_connect_1)
 
-建立 TCP 连接时触发该事件，提供一个`socket`参数，是`net.Socket`类的一个实例。
+  建立 TCP 连接时触发该事件，提供一个`socket`参数，是`net.Socket`类的一个实例。
 
-> close
+- `close`
 
-服务器关闭时触发。
+  服务器关闭时触发。
 
 `http.createServer()`方法就是添加了一个`request`事件监听：
 
@@ -62,37 +62,25 @@ server.listen(3000, () => console.log("listening port 3000"));
 
 ## `http.IncomingMessage`的事件
 
-`http.IncomingMessage` 对象由 http.Server 或 http.ClientRequest 创建，用于访问响应状态、消息头、以及数据。
+`http.IncomingMessage` 对象由 `http.Server` 或 `http.ClientRequest` 创建，用于访问响应状态、消息头、以及数据。
 
-> date
+- `date` 当请求数据到来时触发，提供一个`chunk`参数，表示接受到的数据。
 
-当请求数据到来时触发，提供一个`chunk`参数，表示接受到的数据。
+- `end` 请求数据传输完毕时触发。
 
-> end
-
-请求数据传输完毕时触发。
-
-> close
+- `close`
 
 用户请求结束时，触发该事件。
 
 ## `http.IncomingMessage`的主要属性
 
-> method
+- `method` HTTP 请求的方法，如`GET`。
 
-HTTP 请求的方法，如`GET`。
+- `headers` HTTP 请求头。
 
-> headers
+- `url` 请求 URL。
 
-HTTP 请求头。
-
-> url
-
-请求 URL。
-
-> httpVersion
-
-HTTP 协议的版本。
+- `httpVersion` HTTP 协议的版本。
 
 修改服务器的代码:
 
@@ -133,17 +121,17 @@ server.listen(3000, () => console.log("listening port 3000"));
 
 `http.ServerResponse`是服返回给客户端的信息，常用方法：
 
-> `res.writeHead(statusCode, [headers])`
+- `res.writeHead(statusCode, [headers])`
 
-向请求的客户端发送响应头。
+  向请求的客户端发送响应头。
 
-> `res.write(data, [encoding])`
+- `res.write(data, [encoding])`
 
-向请求的客户端发送内容。
+  向请求的客户端发送内容。
 
-> `res.end([data], [encoding])`
+- `res.end([data], [encoding])`
 
-结束请求。
+  结束请求。
 
 # 向服务器发送请求
 
@@ -210,17 +198,17 @@ req.end();
 
 `http.request()`和`http.get()`方法返回一个`http.ClientRequest`对象，其主要对象和方法有：
 
-> [response 事件](http://nodejs.cn/api/http.html#http_event_response)
+- [`response` 事件](http://nodejs.cn/api/http.html#http_event_response)
 
-接收到响应时触发。
+  接收到响应时触发。
 
-> [request.write[, encoding][, chunk]](http://nodejs.cn/api/http.html#http_request_write_chunk_encoding_callback)
+- [`request.write[, encoding][, chunk]`](http://nodejs.cn/api/http.html#http_request_write_chunk_encoding_callback)
 
-发送请求数据。
+  发送请求数据。
 
-> [res.end([data][, encoding][, callback])](http://nodejs.cn/api/http.html#http_request_end_data_encoding_callback)
+- [`res.end([data][, encoding][, callback])`](http://nodejs.cn/api/http.html#http_request_end_data_encoding_callback)
 
-<strong style="color:#de3f3f; font-size: 26px">[重要]必须记得调用</strong>, 用于结束请求。
+  <strong style="color:#de3f3f; font-size: 20px">[重要]必须记得调用</strong>, 用于结束请求。
 
 ```javascript
 const http = require("http");
