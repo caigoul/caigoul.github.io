@@ -9,11 +9,11 @@ tags:
   - nodejs
 ---
 
-`npm`是`Node.js`的包管理器工具，默认与`Node.js`一起安装。通过 npm 可以很方便吧地下载和使用第三方模块，简化开发工作。
+`npm`是`Node.js`的包管理器工具，默认与`Node.js`一起安装。通过 npm 可以很方便地下载和使用第三方模块，简化开发工作。
 
 # npm init
 
-通过`npm init`将生成一个`package.json`文件，这个文件是整个项目的描述文件。这个文件可以清楚地知道项目的依赖关系、版本、作者等信息。
+通过`npm init`将生成一个`package.json`文件，这个文件是整个项目的描述文件。这个文件描述了项目的依赖关系、版本、作者等信息。
 
 使用`npm init`时，需要填写项目名、版本号、作者等信息，填写完毕之后，将会在使用这个命令的文件夹下产生一个`package.json`文件。
 
@@ -27,7 +27,7 @@ npm init
 
 ![npm init](/img/2019-06-16-npm-init.png)
 
-可以使用`-y`或者`--yes`参数来跳过填写内容。
+可以使用`-y`或者`--yes`参数来跳过填写内容的部分。
 
 ```
 npm init -y
@@ -42,11 +42,11 @@ npm init -y
 npm install underscore
 ```
 
-安装完毕之后，运行命令的文件夹将会多出一个`node_modules`文件夹，在这个文件夹下就可以找到`underscores`这个文件夹。
+安装完毕之后，运行命令的文件夹将会多出一个`node_modules`文件夹，`node_modules`下就可以找到`underscores`这个文件夹。
 
 ![npm install](/img/2019-06-16-npm-install.png)
 
-如果模块只是在开发、调试时使用到（如 vue-cli, babel-loader），使用`--save-dev`参数，这时`package.json`文件的`devDependencies`字段将会记录安装的模块信息。
+如果模块只是在开发、调试时使用到（如 vue-cli, babel-loader），可以使用`--save-dev`参数，这时`package.json`文件的`devDependencies`字段将会记录安装的模块信息。
 
 ```
 npm install --save-dev underscore
@@ -62,7 +62,7 @@ npm install --save underscore
 
 ![npm install --save underscore](/img/2019-06-16-npm-install-save.png)
 
-使用`npm install`命令，npm 会自动下载`package.json`文件里`dependencies`和`devDependencies`字段下的依赖模块。
+使用`npm install`命令，npm 会自动下载`package.json`文件里`dependencies`和`devDependencies`字段下记录的依赖模块。
 
 使用`npm uninstall`来卸载模块。
 
@@ -113,6 +113,8 @@ const arr = [1, 2, 2, 3];
 console.log("数组和   =>" + mymodule.add(arr));
 console.log("数组去重 =>" + mymodule.noRepeat(arr));
 ```
+
+运行结果如下：
 
 ```
 数组和   =>8
