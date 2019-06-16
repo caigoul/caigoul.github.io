@@ -1,11 +1,14 @@
 ---
 title: Tags
 layout: default
+head-img: /img/head/nodejs1.jpeg
 ---
 
 {% include header.html %}
 
-<div class="g-banner tags-banner {{ site.postPatterns | prepend: 'post-pattern-' }} {{ site.theme-color | prepend: 'bgcolor-' }}" data-theme="{{ site.theme-color }}">
+<div class="g-banner tags-banner {{ site.postPatterns | prepend: 'post-pattern-' }} {{ site.theme-color | prepend: 'bgcolor-' }}" data-theme="{{ site.theme-color }}"
+style="background: url('{{ page.head-img | relative_url }}') center no-repeat; background-size: cover;"
+>
     <h2>TAGS</h2>
 </div>
 

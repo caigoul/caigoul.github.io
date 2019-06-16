@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Nodejs包管理器:npm"
+title: "Nodejs包管理器: npm"
 excerpt: nodejs笔记（1）
 cover: /img/head/nodejs1.jpeg
 categories:

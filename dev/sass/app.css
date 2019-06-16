@@ -257,6 +257,7 @@ a {
     border-radius: 50%;
     margin: 0 auto;
     overflow: hidden;
+    background: white !important;
     box-shadow: 0 1px 4px rgba(100, 110, 120, 0.53); }
     .author-card .avatar img {
       width: 100%; }

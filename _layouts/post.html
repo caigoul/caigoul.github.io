@@ -31,6 +31,10 @@
     <div class="filter"></div>
       <div class="post-cover" style="background: url('{{ page.cover | relative_url }}') center no-repeat; background-size: cover;"></div>
     {% endif %}
+    {% if page.head-img %}
+    <div class="filter"></div>
+      <div class="post-cover" style="background: url('{{ page.head-img | relative_url }}') center no-repeat; background-size: cover;"></div>
+    {% endif %}
   </header>
 
   <div class="post-content visible">

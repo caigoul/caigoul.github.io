@@ -643,7 +643,7 @@
 .markdown-body pre {
   padding: 16px;
   overflow: auto;
-  font-size: 100%;
+  font-size: 120%;
   line-height: 1.45;
   border-radius: 3px;
 }
