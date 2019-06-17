@@ -1,20 +1,20 @@
 ---
 layout: post
-title: "Jekyll+Markdown中的Laxed公式"
-excerpt: markdown和laxed.
+title: "Jekyll+Markdown中的Latex公式"
+excerpt: markdown和Latex.
 cover: /img/head/markdown-lexed.jpg
 categories:
   - markdown-lexed
 tags:
   - markdown
-  - laxed
+  - Latex
 ---
 
 # 引入
 
-> 如果你的 Jekyll 主题已经支持了 Laxed 公式，可以跳过引入部分。
+> 如果你的 Jekyll 主题已经支持了 Latex 公式，可以跳过引入部分。
 
-如果你的主题没有引入`mathjax`库来为 Laxed 公式提供支持，需要在主题的布局文件（如`_layouts/default.html`）中引入：
+如果你的主题没有引入`mathjax`库来为 Latex 公式提供支持，需要在主题的布局文件（如`_layouts/default.html`）中引入：
 
 ```html
 <script
@@ -45,7 +45,6 @@ $$ (\overbrace{a_0,a_1,...,a_n}^{\text{共 \\\\\\$n+1\\\\\\$ 项}}) = (\underbra
 ```
 
 $$ (\overbrace{a_0,a_1,...,a_n}^{\text{共 \\\\\\$n+1\\\\\\$ 项}}) = (\underbrace{0,0,...,0}\\\\\\_n,1) $$
-
 
 # 上标与下标
 
@@ -90,7 +89,7 @@ $$(\overbrace{a_0, a_1, ..., a_n}^{\text{共n+1项}}) = (\underbrace{0, 0, ... ,
 
 # 分式
 
-Laxed 中，分式格式为`\frac<分子><分母>`，如：
+Latex 中，分式格式为`\frac<分子><分母>`，如：
 
 `$\frac 12 + \frac 1a = \frac {2+a}{2a}$`$$\frac 12 + \frac 1a = \frac {2+a}{2a}$$
 
@@ -134,7 +133,7 @@ $$ (a+b)^2 = \binom {20}{02} a^2 + \binom 21 ab + \binom 22 b^2 $$
 
 可以在下列符号的相应命令之前加上`\not`命令，而得到其否定形式。如`$$A\in B$$`表示$$A \in B$$，`$$A \notin B$$`表示$$A \notin B$$。
 
-参阅[更加完整的 Laxed 符号](https://blog.csdn.net/zgj926503/article/details/52757631)。
+参阅[更加完整的 Latex 符号](https://blog.csdn.net/zgj926503/article/details/52757631)。
 
 | 小于等于 | 大于等于 |  属于   |  属于   | 远小于  | 远大于  |   约等于    |   相似   |
 | :------: | :------: | :-----: | :-----: | :-----: | :-----: | :---------: | :------: |
@@ -208,7 +207,7 @@ $$
 A_1 & A_2 & A_3 \\
 B_1 & B_2 & B_3 \\
 C_1 & C_2 & C_3 \\
-\end{Vmatrix}\\\\\\\$\$
+\end{Vmatrix}\\\\\\\\\$\$
 
 ```
 
@@ -235,7 +234,7 @@ $$
 1& \dots& 0\\
 \vdots& \ddots& \vdots\\
 0& \dots& 0\\
-\end{bmatrix}\\\\\\\$\$
+\end{bmatrix}\\\\\\\\\$\$
 
 `smallmatrix`可以生成行内的小矩阵，如`$$\begin{smallmatrix} a&b \\ c&d \\ \end{smallmatrix}$$`将生成矩阵$$\begin{smallmatrix} a&b \\ c&d \\ \end{smallmatrix}$$
 
@@ -261,7 +260,7 @@ $$
 
 -x, \quad x\leq0 \\
 x, \quad x>0
-\end{cases}\\\\\\$\$
+\end{cases}\\\\\\\\$\$
 
 ```
 
