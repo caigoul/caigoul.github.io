@@ -112,11 +112,9 @@ var mymodule = require("./exports");
 const arr = [1, 2, 2, 3];
 console.log("数组和   =>" + mymodule.add(arr));
 console.log("数组去重 =>" + mymodule.noRepeat(arr));
-```
 
-运行结果如下：
-
-```
+/**
 数组和   =>8
 数组去重 =>1,2,3
+**/
 ```
