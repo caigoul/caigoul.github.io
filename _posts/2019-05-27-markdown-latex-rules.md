@@ -2,9 +2,9 @@
 layout: post
 title: "Jekyll+Markdown中的Latex公式"
 excerpt: markdown和Latex.
-cover: /img/head/markdown-lexed.jpg
+cover: /img/head/markdown-latex.jpg
 categories:
-  - markdown-lexed
+  - markdown-latex
 tags:
   - markdown
   - Latex
@@ -207,7 +207,7 @@ $$
 A_1 & A_2 & A_3 \\
 B_1 & B_2 & B_3 \\
 C_1 & C_2 & C_3 \\
-\end{Vmatrix}\\\\\\\\\$\$
+\end{Vmatrix}\\\\\\\\\\$\$
 
 ```
 
@@ -234,7 +234,7 @@ $$
 1& \dots& 0\\
 \vdots& \ddots& \vdots\\
 0& \dots& 0\\
-\end{bmatrix}\\\\\\\\\$\$
+\end{bmatrix}\\\\\\\\\\$\$
 
 `smallmatrix`可以生成行内的小矩阵，如`$$\begin{smallmatrix} a&b \\ c&d \\ \end{smallmatrix}$$`将生成矩阵$$\begin{smallmatrix} a&b \\ c&d \\ \end{smallmatrix}$$
 
@@ -260,7 +260,7 @@ $$
 
 -x, \quad x\leq0 \\
 x, \quad x>0
-\end{cases}\\\\\\\\$\$
+\end{cases}\\\\\\\\\$\$
 
 ```
 
