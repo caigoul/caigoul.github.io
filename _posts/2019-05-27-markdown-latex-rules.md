@@ -41,14 +41,14 @@ tags:
 在 Markdown 中，使用单美元符号`$ 公式 $`插入行内公式，如 $$a + b = 1$$ ，行间公式使用双美元号`$$ 公式 $$`。如：
 
 ```
-$$ (\overbrace{a_0,a_1,...,a_n}^{\text{共 \\\\\\$n+1\\\\\\$ 项}}) = (\underbrace{0,0,...,0}\\\\\\_n,1) $$
+$$ (\overbrace{a_0,a_1,...,a_n}^{\text{共 n+1 项}}) = (\underbrace{0,0,...,0}_n,1) $$
 ```
 
-$$ (\overbrace{a_0,a_1,...,a_n}^{\text{共 \\\\\\$n+1\\\\\\$ 项}}) = (\underbrace{0,0,...,0}\\\\\\_n,1) $$
+$$ (\overbrace{a_0,a_1,...,a_n}^{\text{共 n+1 项}}) = (\underbrace{0,0,...,0}_n,1) $$
 
 # 上标与下标
 
-*上标*使用`^`表示，*下标*使用`_`表示。如`$10^n$`表示$$10^n$$，而`$a_i$`将会得到$$ a_i$$。当上标与下标**多于一个字符**时。使用花括号`{}`进行分组，以确定上下标范围，如`$A\\\\\\\_{ij} = 2^{i+j}$`得到$$A_{ij} = 2^{i+j}$$。
+*上标*使用`^`表示，*下标*使用`_`表示。如`$10^n$`表示$$10^n$$，而`$a_i$`将会得到$$ a_i$$。当上标与下标**多于一个字符**时。使用花括号`{}`进行分组，以确定上下标范围，如`$A_{ij} = 2^{i+j}$`得到$$A_{ij} = 2^{i+j}$$。
 
 同时使用上标和下标时，上下标的先后次序并不重要，二者互不影响。如`$a_i^j$`与`$a^j_i$`都会得到$$a^j_i$$。嵌套使用上下标时，外层公式一定要使用分组。如`$a^b^c$`是**一个错误的公式($$a^b^c$$)**, 而`${a^b}^c$`或者`$a^{b^c}$`将会得到$$a^{b^c}$$。
 
@@ -89,11 +89,14 @@ $$(\overbrace{a_0, a_1, ..., a_n}^{\text{共n+1项}}) = (\underbrace{0, 0, ... ,
 
 # 分式
 
-Latex 中，分式格式为`\frac<分子><分母>`，如：
+Latex 中，分式格式为`\frac<分子><分母>`
 
-`$\frac 12 + \frac 1a = \frac {2+a}{2a}$`$$\frac 12 + \frac 1a = \frac {2+a}{2a}$$
+``$\frac 12 + \frac 1a = \frac {2+a}{2a}$`
+
+$$\frac 12 + \frac 1a = \frac {2+a}{2a}$$
 
 连分式是一种特殊的分式，`amsmath`提供的`\cfrac`专用于输入连分式。这个命令可以带一个可选的参数 l、c、r，表示左、中、右（对齐），默认是居中，如：
+
 `$$ \cfrac{1}{1+\cfrac{2}{1+\cfrac{3}{1+x}}} = \cfrac[r]{1}{1+\cfrac[c]{2}{1+\cfrac[l]{3}{1+x}}} $$`
 
 得到
@@ -112,7 +115,9 @@ $$ (a+b)^2 = \binom {20}{02} a^2 + \binom 21 ab + \binom 22 b^2 $$
 
 `\sqrt`表示根式，可以带一个可选参数，表示开方次数，如:
 
-`$\sqrt 4 = \sqrt[3] 8 = 2$`得到$$\sqrt 4 = \sqrt[3] 8 = 2$$。
+`$\sqrt 4 = \sqrt[3] 8 = 2$`
+
+得到$$\sqrt 4 = \sqrt[3] 8 = 2$$。
 
 # 希腊字母
 
@@ -172,7 +177,8 @@ $$ (a+b)^2 = \binom {20}{02} a^2 + \binom 21 ab + \binom 22 b^2 $$
 $$
 \def\ooint{ {\bigcirc}\kern-11.5pt{\int}\kern-6.5pt{\int}}
 \def\oooint{ {\bigcirc}\kern-12.3pt{\int}\kern-7pt{\int}\kern-7pt{\int}}
-\ooint,  \oooint$$
+\ooint,  \oooint
+$$
 
 现在应该可以写一些简单的公式了：
 
@@ -182,7 +188,22 @@ $$
 | `$\bar x = \frac{M_y}M = \frac{\sum^n_{i=1}m_ix_i}{\sum^n_{i=1}M_i}$` | $$\bar x = \frac{M_y}M = \frac{\sum^n_{i=1}m_ix_i}{\sum^n_{i=1}M_i}$$ |
 | `$\frac{\partial z}{\partial x}\arrowvert_{\begin{align} x=x_0 \\ y=y_0\end{align}} = \lim_{\Delta x \to 0}\frac{\Delta z}{\Delta x} = \lim_{\Delta x \to 0}\frac{f(x_0 + \Delta x, y_0) - f(x_0,y_0)}{\Delta x}$` | $$\frac{\partial z}{\partial x}\arrowvert_{\begin{align} x=x_0 \\ y=y_0\end{align}} = \lim_{\Delta x \to 0}\frac{\Delta z}{\Delta x} = \lim_{\Delta x \to 0}\frac{f(x_0 + \Delta x, y_0) - f(x_0,y_0)}{\Delta x}$$ |
 
+如果要让*上下标*在积分或求和的**正上方**或**正下方**，可以在`\sum`或`\int`命令后面加上`\limits`命令。
 
+```
+$$\iint\limits_D f(x,y)\Delta\sigma = 
+\int_{ \theta_1 } ^ { \theta_2 } d\theta
+\int_{ r(\theta_1) } ^ { r(\theta_2) } f(rcos\theta, rsin\theta)rdr$$
+```
+
+$$\iint\limits_D f(x,y)\Delta\sigma = 
+\int_{\theta_1}^{\theta_2}d\theta \int_{r(\theta_1)}^{r(\theta_2)}f(rcos\theta, rsin\theta)rdr$$
+
+```
+$$\lim_\limits{\Delta x \to 0}\frac{\Delta z}{\Delta x} = \lim_\limits{\Delta x \to 0}\frac{f(x_0 + \Delta x, y_0) - f(x_0,y_0)}{\Delta x}$$
+```
+
+$$\lim_\limits{\Delta x \to 0}\frac{\Delta z}{\Delta x} = \lim_\limits{\Delta x \to 0}\frac{f(x_0 + \Delta x, y_0) - f(x_0,y_0)}{\Delta x}$$
 
 
 
@@ -202,12 +223,11 @@ $$
 书写矩阵时，不同的列使用`&`分隔，行用`\\`分隔。如：
 
 ```
-$$
-
+$$\begin{Vmatrix}
 A_1 & A_2 & A_3 \\
 B_1 & B_2 & B_3 \\
 C_1 & C_2 & C_3 \\
-\end{Vmatrix}\\\\\\\\\\$\$
+\end{Vmatrix} $$
 
 ```
 
@@ -222,23 +242,21 @@ C_1 & C_2 & C_3 \\
 如：
 
 ```
-
-$$
-1& \dots& 0\\
-\vdots& \ddots& \vdots\\
-0& \dots& 1\\
+$$ \begin{bmatrix}
+1& \dots & 0 \\
+\vdots & \ddots & \vdots \\
+0& \dots & 1 \\
 \end{bmatrix}$$
 ```
-$$
 
-1& \dots& 0\\
-\vdots& \ddots& \vdots\\
-0& \dots& 0\\
-\end{bmatrix}\\\\\\\\\\$\$
+$$ \begin{bmatrix}
+1& \dots & 0 \\
+\vdots & \ddots & \vdots \\
+0& \dots & 1 \\
+\end{bmatrix}$$
 
 `smallmatrix`可以生成行内的小矩阵，如`$$\begin{smallmatrix} a&b \\ c&d \\ \end{smallmatrix}$$`将生成矩阵$$\begin{smallmatrix} a&b \\ c&d \\ \end{smallmatrix}$$
 
-$$
 # 公式组
 
 不需要对齐的公式用`gather`，`align`将会使公式组对齐。
@@ -256,12 +274,10 @@ $$
 使用`cases`环境来书写方程式。如：
 
 ```
-$$
-
+$$ y = \begin{cases}
 -x, \quad x\leq0 \\
 x, \quad x>0
-\end{cases}\\\\\\\\\$\$
-
+\end{cases} $$
 ```
 
 $$y = \begin{cases}
@@ -272,5 +288,3 @@ x, \quad x>0
 
 
 <script src="https://cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-$$
-```
