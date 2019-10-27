@@ -2,7 +2,6 @@
 layout: post
 title: "本地化Jekyll themes网站来为自己的GitPage博客挑选主题"
 excerpt: 解决国内jekyllthemes.org访问过慢的情况。
-cover: /img/head/jekyll-theme.jpg
 categories:
   - jekyll theme
 tags:

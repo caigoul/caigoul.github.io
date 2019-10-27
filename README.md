@@ -1,455 +1,198 @@
-## jekyll-theme-H2O
+LOFFER是个可以帮助你get off from LOFTER的软件（我知道这个pun很烂）。
 
-基于Jekyll的博客主题模板，简洁轻量。
+这是一个可以通过Fork直接发布在GitHub的Jekyll博客，你不需要编写代码或使用命令行即可获得一个部署在GitHub的博客。
 
-另外，还有此主题的[Ghost版本](https://github.com/eastpiger/ghost-theme-H2O) by [eastpiger](https://github.com/eastpiger)
+## 更新内容
 
-### Preview
+### 2019-07-25 V0.4.0
 
-#### [在线预览 Live Demo →](http://liaokeyu.com/)
+修订目录跳级会坏掉的问题，不算完美解决，但不会坏掉了。
 
-![](screenshot/jekyll-theme-h2o-realhome.jpg)
+增加对LaTeX渲染的支持，请见[这篇说明和示例](https://fromendworld.github.io/LOFFER/math-test/)。
 
-![](screenshot/jekyll-theme-h2o-realm.png)
+增加置顶功能，只要在一个post的YAML Front Matter（就是文章头部的这段信息）中加入` pinned: true `，这篇文章就可以置顶了。
 
-如果你喜欢这个博客模板，请在右上角star一下，非常感谢～
+另外介绍一个给LOFFER更换主题颜色的手法。LOFFER用了一个开源的颜色表[Open Color](https://yeun.github.io/open-color/),该色表提供的可选颜色有：red, pink, grape, violet, indigo, blue, cyan, teal, green, lime, yellow。
 
-If you like this theme or using it, please give a ⭐️ for motivation ;)
+LOFFER的默认状态是teal，要更换主题颜色，只要打开文件` _sass/_variables.scss `，将文件中所有的teal全部替换成你想要的颜色。例如，查找teal，替换indigo，全部替换，commit，完成！
 
-如果想体验手机浏览效果，可以扫一下二维码：
 
-![](screenshot/1494404591.png)
+### 2019-07-20 V0.3.0
 
-Using your smartphone to scan the QR Code
+新版本增加目录功能，在post的信息中心加入` toc: true `，这篇博文就会显示目录了。
 
-### Features 特性
+这次没有对config的修改，因此应该可以通过[这个方法](https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser)，给自己提pull request来更新。
 
-#### CN
+目录基于[jekyll-toc by allejo](https://github.com/allejo/jekyll-toc)制作。
 
-- 代码高亮
-- 夜间模式
-- Disqus评论系统
-- 粉蓝两种主题色
-- 头图个性化底纹
-- 响应式设计
-- 社交图标
-- SEO标题优化
-- 文章标签索引
-- 博客文章搜索
-- 复制文章内容自动添加版权
+目前我试用发现了一点小问题：如果你的标题级数不按套路变化，它就会搞不懂…… 
 
-#### EN
+` # 一级标题 `下面必须是` ## 二级标题 `，如果是` ### 三级标题 `它就人工智障了【手动扶额】
 
-- Code highlight
-- Night mode
-- Disqus Comment System
-- Theme color: Blue & Pink
-- Hero Patterns
-- Responsive design
-- SNS Icon
-- Title SEO
-- Tags system
-- Search
-- Copyright text on copy event
+注意：目前目录仅在桌面版显示。
 
-### Usage 快速开始
 
-首先你需要安装Jekyll，请查看文档: [快速指南](http://jekyll.com.cn/docs/quickstart/)
+### 2019-06-30 V0.2.0
 
-如果你已经安装了Jekyll，请检查版本是否为3.0.x，你可以使用 ```gem update jekyll``` 命令进行升级。
+新版本进一步优化了一下样式，并且支持了基于GitHub Issues的评论Gitalk（请看下文的配置说明）。
 
-使用 ```gem install jekyll-paginate``` 或 ```sudo gem install jekyll-paginate``` 安装Jekyll的分页插件。
+如果你已经fork了LOFFER，想要更新到新版本的话，可以试试[这个方法](https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser)，或者你也可以干脆删掉重来，只要保留自己的大部分config设定和所有的post就好。
 
-> H2O主题基于Jekyll 3.2.1版本，不同版本之间可能存在部分差异，具体请参考[官方更新文档](https://jekyllrb.com/news/)
+LOFFER只是容器，你的posts才是博客的核心。
 
-点击右上角Fork按钮在你的Github上创建分支，或者```clone```到本地。
 
-``` git clone https://github.com/kaeyleo/jekyll-theme-H2O.git ```
+## 注意
 
-最后，在命令行输入 ```jekyll server``` 开启服务，就能在本地预览主题了。
+LOFFER是一个**博客模板**，使用GitHub Pages发布个人博客是没有任何问题的。 **但是:**
 
-如果需要部署到线上环境，请参照配置文档的 **开始** 章节进行操作。
+- **请勿发布成人向内容** 
+- **不要将大量图片上传到GitHub**
 
-### Document 配置文档
+如有疑问，请阅读[GitHub Pages官方说明](https://pages.github.com/)。
 
-#### CN
+另外，同人作品更好的发布平台是[AO3](https://archiveofourown.org/)，你想你发在AO3还有tag还有kudos还有人看，是吧？
 
-- 开始
-	- [站点信息](#站点信息)
-	- [写一篇文章](#写一篇文章)
-- 组件
-	- [导航](#导航)
-	- [侧边栏](#侧边栏)
-	- [社交图标](#社交图标)
-	- [个人简介](#个人简介)
-	- [标签](#标签)
-	- [文章搜索](#文章搜索)
-	- [代码高亮](#代码高亮)
-	- [夜间模式](#夜间模式)
-- 个性化
-	- [博客封面、主题皮肤](#主题皮肤)
-	- [头图底纹](#头图底纹)
-- 高级部分
-	- [自定义](#自定义)
-- 集成服务
-	- [Disqus](#disqus)
-	- [Share.js](#sharejs)
 
-#### EN
+## 如何使用
 
-- Get Started
-	- [Site Settings](#站点信息)
-	- [Write Posts](#写一篇文章)
-- Components
-	- [Navigation Menu](#导航)
-	- [Sidebar](#侧边栏)
-	- [SNS Icons](#社交图标)
-	- [Personal Information](#个人简介)
-	- [Tags](#标签)
-	- [Search](#文章搜索)
-	- [Syntax Highlight](#代码高亮)
-	- [Night Mode](#夜间模式)
-- Style
-	- [Theme Color](#主题皮肤)
-	- [Hero Background Patterns](#头图底纹)
-- Advanced
-	- [Customization](#自定义)
-- Plugins
-	- [Disqus](#Disqus)
-	- [Share.js](#Share.js)
-
-
-You can easily get started by modifying _config.yml
-
-#### 站点信息
-
-你可以通用修改 `_config.yml` 文件来轻松的开始搭建自己的博客
-
-```
-# Site settings
-title: '廖柯宇的独立博客' # 你的博客网站标题
-description: '很高兴能在这里与你分享我对技术和生活的思考。' # 站点描述
-keyword: '廖柯宇, 廖柯宇的独立博客, 前端, 设计' # 网站关键词
-url: 'http://liaokeyu.com' # 站点url
-baseurl: ''
-
-# Build settings
-paginate: 6 # 一页放几篇文章
-paginate_path: 'page:num'
-```
-
-其实大部分参数已经默认配置好了，你只需要通过文档了解它们，然后根据自己的需求去`_config.yml`文件里修改即可。
-
-#### 写一篇文章
-
-文章一般都放在`_posts`文件夹里，每篇文章的开头都需要设置一些头信息：
-
-```
----
-layout: post
-title: 'H2O theme for Jekyll'
-subtitle: '或许是最漂亮的Jekyll主题'
-date: 2017-04-18
-categories: 技术
-cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-postcover.jpg'
-tags: jekyll 前端开发 设计
----
-```
-
-#### 导航
-
-博客顶部的导航栏信息需要以下面的格式进行配置：
-
-```
-# Navigation links
-nav:
-  home: '/'
-  tags: '/tags.html'
-```
-
-导航链接需要写上完整的html文件名，它们都是放于根目录下的，如果自建文件夹，请务必在`exclude` 参数中增加自建文件夹的文件名:
-
-```
-# Build settings
-exclude: ['node_modules', 'dev', 'package.json', '自定义的文件夹名字']
-```
+首先，这个博客主题适应手机阅读，但是，要使用它建立你自己的博客，你需要上电脑操作。
 
-这样做是为了在Jekyll运行时排除某些文件被复制到运行文件`_site`里去。
+### 第一步 Fork到你的GitHub
 
-#### 侧边栏
+请点击[GitHub](https://github.com/)，注册一个GitHub账户。我们可以理解Git就是个文件版本管理系统，本身并不需要会代码即可使用。
 
-![](screenshot/jekyll-theme-h2o-sideBar.png)
+现在你看到的LOFFER，是作为一个GitHub上的Repository（代码库）存在的，你可以把这个代码库复制到你自己的GitHub账户中，这个操作叫做Fork。
 
-侧边栏分为两个部分：【个人简介】和【推荐标签】。当屏幕宽度小于960px时，侧边栏会被隐藏。
+点击[LOFFER](https://github.com/FromEndWorld/LOFFER)，进入LOFFER的GitHub Repository页面，然后点Fork：
 
-#### 社交图标
+![gif](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/fork.gif)
 
-使用阿里的图标管理平台Iconfont整理了一套常用的社交图标用于博客的个人简介上，包括微博、知乎、掘金、简书、Github等十三个网站，并且对鼠标悬停时的样式颜色进行了优化。
+然后你立刻就可以看到LOFFER再次出现，这次它已经属于你了，这里我建议你重命名它，点击settings，给你的博客起个名字（请尽量使用字母而非中文）。
 
-配置格式如下：
+![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/rename.png)
 
-```
-# SNS settings 配置社交网站url
-sns:
-  weibo: '//weibo.com/lovecolcol'
-  juejin: '//juejin.im/user/57a6f434165abd006159b4cc'
-  instagram: '//www.instagram.com/steveliaocn'
-  github: '//github.com/kaeyleo'
-```
+然后，向下拉页面，你会看到“GitHub Pages”，这是GitHub内置的网站host服务，选择master，如图所示：
 
-sns属性可选参数：
+![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/pages.png)
 
-社交网站 | 参数
---------|----
-微博 | `weibo`
-推特 | `twitter`
-Github | `github`
-知乎 | `zhihu`
-掘金 | `juejin`
-豆瓣 | `douban`
-简书 | `jianshu`
-UI中国 | `uicn`
-领英 | `linkedin`
-Facebook | `facebook`
-Youtube | `youtube`
-Instagram | `instagram`
-Dribbble | `dribbble`
-Behance | `behance`
-Medium | `medium`
-VK | `vk`
+在几秒钟后，刷新此页面，你通常会看到这个绿色的东西（如果没看到，多等一会），你的网站已经发布成功，点击这个链接，即可查看：
 
-#### 个人简介
+![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/published.png)
 
-首页侧边栏和文章页面底部都会显示你的个人简介
+你可能会看到网站长得很丑，请继续下一步.
 
-```
-# Author 配置博主信息
-author: 'Jack'
-nickname: 'xx'
-bio: '程序员'
-avatar: 'assets/img/avatar.jpg'
-```
+### 第二步 设置站点信息
 
-#### 标签
+在你的博客的GitHub代码库页面里，选择Code，文件列表里选择_config.yml，点击打开，点击右上角笔形图标修改文档。
 
-对侧边栏的标签模块进行相应配置：
+修改完成后，点击“Commit changes”。每次修改过代码库并且commit后，GitHub Pages都会自动重新发布网站，只要等上几分钟，再次刷新你的博客页面，就会看到你的修改了。
 
-```
-# Tags
-recommend-tags: true
-recommend-condition-size: 12
+还有一点，**LOFFER使用的是MIT协议，大意就是全部开源随意使用，如果你要保留自己博文的权利，请编辑LICENSE文件，写上类似“_posts中的文档作者保留权利”这样的内容。**
 
-```
+### 第三步 发布博文
 
-Tags配置说明：
+在你的博客的GitHub代码库页面里，点开_posts文件夹，这里面就是你的博客文章。
 
- 属性 | 参数 | 描述
------|-----|-------
-`recommend-tags` | `true`, `false` | 是否显示推荐标签
-`recommend-condition-size` | `12` 或其他数字 | 推荐标签个数限制
+这些文章使用的格式是Markdown，文件后缀名是md，这是一种非常简单易用的有格式文本标记语言，你应该已经注意到，在LOFFER自带的示例性博文中有一篇中文的Markdown语法介绍。
 
-#### 文章搜索
+更简单的办法是使用[Typora](https://typora.io/)，这是一个全图形化界面，全实时预览的Markdown写作软件，非常轻量，而且免费。
 
-![](screenshot/jekyll-theme-h2o-search.png)
+![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Typora.png)
 
-基于Jekyll服务器生成文章索引文件 `search.json` 为博客提供搜索服务。输入文章标题或与文章标签相关的关键字即可。
+在发布博文前，你需要在文章的头部添加这样的内容，包括你的文章标题，发布日期，作者名，和tag等。
 
-搜索功能默认是开启的，以卡片的样式显示在侧边栏底部。如需关闭请将配置文件 `_config.yml` 中 `search ` 属性的值改为 `false` 。
+    ---
+    layout: post
+    title: LOFFER文档
+    date: 2019-06-02
+    Author: 来自中世界
+    categories: 
+    tags: [sample, document]
+    comments: true
+    --- 
 
-```
-# Search
-search: true
-```
+完成后，保存为.md文件，文件名是date-标题，例如 2019-06-02-document.md (注意这里的标题会成为这个post的URL，所以推荐使用字母而非中文，它不影响页面上显示的标题)，然后上传到_posts文件夹，commit，很快就可以在博客上看到新文章了。
 
-说明 | 参数
-----|-----
-开启搜索功能 | `true`
-关闭搜索功能 | `false`
+### 可选：图片怎么办？
 
-#### 代码高亮
+少量图片可以上传到images文件夹，然后在博文中添加。
 
-模板引入了[Prism.js](http://prismjs.com)，一款轻量、可扩展的代码语法高亮库。
+但是GitHub用来当做图床有滥用之嫌，如果你的博客以图片为主，建议选择外链图床，例如[sm.ms](https://sm.ms/)就是和很好的选择。
 
-很多知名网站如[MDN](https://developer.mozilla.org/)、[css-tricks](https://css-tricks.com/)也在用它，就连 JavaScript 之父 [Brendan Eich](https://brendaneich.com/) 也在个人博客上使用。
+如果想要寻找更适合自己的图床，敬请Google一下。
 
-![代码高亮](http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-highlight.png)
+在博文中添加图片的Markdown语法是：`![图片名](URL)`
 
-遵循 [HTML5](https://www.w3.org/TR/html5/grouping-content.html#the-pre-element) 标准，Prism 使用语义化的 `<pre>` 元素和 `<code>` 元素来标记代码区块：
-
-```
-<pre><code class="language-css">p { color: red }</code></pre>
-```
-
-在Markdown中你可以这样写：
-
-
-	 ```css
-		p { color: red }
-	 ```
-
-支持语言：
-
-- HTML
-- CSS
-- Sass
-- JavaScript
-- CoffeeScript
-- Java
-- C-like
-- Swift
-- PHP
-- Go
-- Python
-
-#### 夜间模式
-
-晚11点至次日凌晨6点自动开启夜间模式。如果不需要，则将配置文件 `_config.yml` 中 `nightMode ` 属性的值改为 `false` 即可。
-
-```
-# Night mode
-nightMode: true
-```
-
-说明 | 参数
-----|-----
-开启夜间模式 | `true`
-关闭夜间模式 | `false`
-
-#### 主题皮肤
-
-![](screenshot/jekyll-theme-h2o-themecolor.jpg)
-
-支持两种主题颜色蓝色（默认）和粉色
-
-主要效果体现在首页博客封面、顶部导航栏的logo以及鼠标悬停时文字显示的颜色效果。
-
-```
-# theme color
-theme-color: 'default' # pink or default
-```
-
-颜色 | 参数
-----|-----
-蓝色 | `default`
-粉色 | `pink`
-
-如果你希望在博客封面显示图片，需要去index.html文件中的头信息中添加 `header-img` 配置：
-
-```
----
-layout: default
-home-title: Steven的博客
-description: 开发者，创造者
-header-img: assets/img/banner.jpg
----
-```
-
-#### 头图底纹
-
-![](screenshot/jekyll-theme-h2o-heroPatterns.png)
-
-在没有图片的情况下单纯显示颜色会不会太无趣了点？于是想到了加入底纹元素，底纹素材是SVG格式的（保存在css样式里），加载比图片快很多。六种底纹（电路、食物、云海、钻石等等）供你选择，配置如下：
-
-```
-# Hero background patterns
-postPatterns: 'circuitBoard'
-```
-
-`postPatterns` 属性参数配置：
-
-底纹描述  |  参数
-------|------
-电路 | `circuitBoard`
-圆环 | `overlappingCircles`
-吃货日常：啃打鸡 | `food`
-土豪必备：钻石| `glamorous`
-圈圈叉叉 | `ticTacToe`
-中国风：云海 | `seaOfClouds`
-
-#### 自定义
-
-主题开发使用的技术栈也比较简单：引入jQuery类库、使用Sass代替CSS编写样式，使用Gulp完成Sass的编译、CSS和JavaScript的代码合并压缩等任务。
-
-如果你喜欢折腾，想对模板的代码进行修改，需要使用命令 `npm install` 安装 `package.json` 中的依赖，然后 `gulp` 一下即可开始你的自定义之旅。
-
-在了解H2O主题的目录结构之前，确保你对[Jekyll目录结构](http://jekyll.com.cn/docs/structure/)有所了解。
-
-```
-	.
-	├── _config.yml # 配置文件
-	├── _includes # 页面组件方便重用
-	|   ├── footer.html # 页脚
-	|   └── head.html # html文档的头部内容
-	|   └── header.html # 顶部菜单栏
-	|   └── pageNav.html # 文章列表分页组件
-	├── _layouts # 布局模板
-	|   ├── default.html # 默认模板
-	|   └── post.html # 文章页面模板
-	├── _posts # 这里放文章
-	|   ├── 2017-05-03-elements-of-javascript-style.md # 命名格式：年-月-日-文章标题.md
-	|   └── 2007-02-21-life-on-mars.md
-	├── _site # Jekyll将源码处理后生成的站点文件，里面的内容可直接发布
-	├── assets # 存放用于线上环境的静态资源，如需修改css和js文件请到dev文件夹
-	|   ├── css # dev文件夹中sass编译后的样式文件
-	|   └── fonts # 字体文件
-	|   └── icons # 图标文件
-	|   └── img #  图片文件
-	|   └── js # dev文件夹中处理后的脚本文件
-	├── dev # 开发文件
-	|   ├── js # 存放脚本源码
-	|   └── sass # 样式源码
-	|       └── app.scss # 整合下面的所有样式文件
-	|       └── base.scss # 引入字体、Reset部分样式
-	|       └── common.scss # 模板的主要样式
-	|       └── helper.scss # 工具样式
-	|       └── layouts.scss # 响应式布局
-	└── gulpfile.js # 自动化任务脚本
-	└── index.html # 模板首页
-	└── tags.html # 标签页面
-	└── 404.html # 404页面
-	└── package.json # 管理项目的依赖项
-```
-
-值得注意的是，css及js的源码都在 `dev` 文件夹中，每一次保存 gulp 都会对它们进行处理并保存到 `assets` 文件夹以供 `_site` 上线环境使用。
+### 可选：添加评论区
 
 #### Disqus
 
-[Disqus](https://disqus.com/)是一个第三方社交评论插件，体验相当不错。
+LOFFER支持Disqus评论，虽然Disqus很丑，但是它是免费的，设置起来又方便，因此大家也就不要嫌弃它。
 
-在配置文件 `_config.yml` 中找到comments的相关配置，设置 `disqus` 参数为 `true` 打开评论功能（ `false` 为关闭），并且设置 `disqus_url`。
+首先，注册一个[Disqus](https://disqus.com/)账户，我们可以选择这个免费方案：
 
-```
-# Comments
-comments:
-	disqus: true
-	disqus_url: 'https://your-disqus-username.disqus.com/embed.js'
-```
+![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-plan.png)
 
-注：`disqus` 默认值为 `false`
+注册成功后，新建一个站点（site），以LOFFER为例设置步骤如下：
 
-#### Share.js
+首先站点名LOFFER，生成了shortname是loffer，类型可以随便选。
 
-为了让文章更方便地分享，使用了第三方分享插件[Share.js](https://github.com/overtrue/share.js)，支持一键分享到微博、QQ空间、QQ好友、微信、腾讯微博、豆瓣、Facebook、Twitter、Linkedin、Google+、点点等社交网站。
+![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-1.png)
 
-```
-# Share
-social-share: true # 开启或者关闭分享功能
-social-share-items: ['wechat', 'weibo', 'douban','twitter']
-```
+安装时选择Jekyll。
 
-### Contribution 贡献
+![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-2.png)
 
-Any types of contribution are welcome. Thanks.
+最后填入你的博客地址，语言可以选中文，点Complete，即可！
 
-接受各种形式的贡献，包括不限于提交问题与需求，修复代码。等待您的 ```Pull Request```
+![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-3.png)
 
-#### 感谢参与代码贡献的伙伴
+然后需要回到你的博客，修改_config.yml文件，在disqus字段填上你的shortname，commit，完成！
 
-- [Ray-Eldath](https://github.com/Ray-Eldath)
-- [sctop](https://github.com/sctop)
-- [bananaappletw](https://github.com/bananaappletw)
-- [moycat](https://github.com/moycat)
+#### Gitalk
 
-### License 许可证
+新增内容，LOFFER 0.2.0版本支持Gitalk评论区（在LOFFER示例站中仍然是Disqus，可以在[我的博客](https://himring.top/gitalk/)查看Gitalk的demo），设置方法如下：
 
-Jekyll-Theme-H2O is licensed under [MIT](https://github.com/kaeyleo/jekyll-theme-H2O/blob/master/LICENSE).
+首先，创建一个[OAuth application](https://github.com/settings/applications/new), 设置如图：
+
+![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/application_settings.png)
+
+点Register后就会看到你所需要的两个值，clientID和clientSecret，把它们复制到你的_config.yml文件中相应的字段：
+
+    gitalk:
+      clientID: <你的clientID>
+      clientSecret: <你的clientSecret>
+      repo: <你的repository名称>
+      owner: <你的GitHub用户名>
+
+然后commit，你的Gitalk评论区就会出现了。对于每一篇文章，都需要你来进入文章页，来初始化评论区，这一操作会在你的repository上创建一个Issue，此后的评论就是对这个Issue的回复。
+
+你可以进入你的repository的Issue页面，点**Unsubscribe**来避免收到大量相关邮件。
+
+注意：出于很明显的原因，最好不要同时添加Disqus和Gitalk评论区。
+
+### 导入LOFTER的内容
+
+这部分由于LOFTER的导出文件十分~~优秀~~，需要另外解决。
+
+诸位可以使用[墨问非名太太的脚本](http://underdream.lofter.com/post/38ea7d_1c5d8a983)，其中选择Jekyll输出即可。
+
+我个人也在折腾一个脚本，目前还没有完全debug清楚，不管如何，请先在lofter里导出一下，存在本地也是好的，贴吧可以让2017以前所有内容全部消失，中国互联网，没什么不可能发生的。
+
+## 致谢
+
+* [Jekyll](https://github.com/jekyll/jekyll) - 这是本站存在的根基
+* [Kiko-now](<https://github.com/aweekj/kiko-now>) - 我首先是fork这个主题，然后再其上进行修改汉化，才有了LOFFER
+* [Font Awesome](<https://fontawesome.com/>) - 社交网络图标来自FontAwesome的免费开源内容
+
+
+
+## 帮助这个项目
+
+介绍更多人来使用它，摆脱lofter自由飞翔！
+
+当然如果单说写同人的话，我还是建议大家都去AO3，但是自家博客自己架也很酷炫，你还可以选择很多其他的forkable Jeykll主题，GitHub上有很多，或者试试其他博客架设工具，例如Hexo，与代码斗其乐无穷。
+
+最后，回到[LOFFER](https://github.com/FromEndWorld/LOFFER)，给我点一个☆吧！
+
+![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/givemefive.png)
