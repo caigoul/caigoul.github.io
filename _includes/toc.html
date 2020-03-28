@@ -108,6 +108,10 @@ var toc_control = (function () {
     var toc = document.getElementsByClassName('toc')[0]
     var toc_btn = document.getElementsByClassName('toc-btn')[0]
     var toc_btn_icon = toc_btn.firstChild
+    document.getElementsByClassName('toc').item(0).onclick = function () {
+        toc_control()
+    }
+    
     var status = 0
     return function () {
         if (status == 0) {
