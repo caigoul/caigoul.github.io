@@ -5,6 +5,7 @@
     {% include nav.html %}
 
     {% if page.toc==true %}
+      <a class="toc-btn" href="javascript:toc_control();"><i class="fa fa-bars"></i></a>
       <aside class="toc">
         {% include toc.html html=content %}
       </aside>

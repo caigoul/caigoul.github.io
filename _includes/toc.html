@@ -102,3 +102,23 @@
 {{ my_toc | lstrip }}{% endcapture %}
     {% endif %}
 {% endcapture %}{% assign tocWorkspace = '' %}{{ my_toc | markdownify | strip }}
+
+<script>
+var toc_control = (function () {
+    var toc = document.getElementsByClassName('toc')[0]
+    var toc_btn = document.getElementsByClassName('toc-btn')[0]
+    var toc_btn_icon = toc_btn.firstChild
+    var status = 0
+    return function () {
+        if (status == 0) {
+          toc_btn_icon.setAttribute('class', 'fa fa-arrow-left')
+          toc.setAttribute('style', 'right: 0')
+          status = 1
+        } else {
+            toc_btn_icon.setAttribute('class', 'fa fa-bars')
+            toc.setAttribute('style', 'right: -500px')
+            status = 0
+        }
+    }
+})()
+</script>

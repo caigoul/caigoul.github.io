@@ -524,12 +524,35 @@ nav {
 // TOC
 .toc::-webkit-scrollbar { width: 0 !important }
 
+.toc-btn {
+  @include mobile {
+    position: fixed;
+    width: 2em;
+    height: 2em;
+    background: $lightGray;
+    z-index: 20;
+    text-align: center;
+    font-size: 1em;
+    bottom: 1.25em;
+    right: 1.25em;
+    box-shadow: 0 0 0.1em #80808042;
+    transition: all 399ms;
+    outline: none;
+
+    &:hover {
+      box-shadow: 0 0 0.5em rgba(182, 182, 182, 0.507);
+      background: $blue;
+      color: white;
+    }
+  }
+}
+
 .toc {
   width: 240px;
   height: 100%;
   left: 30%;
   position: fixed;
-  z-index: 4;
+  z-index: 19;
   padding: 60px 20px 0 20px;
   overflow-y: auto;
   
@@ -548,7 +571,18 @@ nav {
   }
 
   @include mobile{
-    display:none;
+    top: 0;
+    bottom: 0;
+    right: -500px;
+    left: auto;
+    width: 470px;
+    background: $white;
+    transition: right 400ms;
+    
+    @media screen and (max-width: 500px) {
+      right: -500px;
+      width: 100%;
+    }
   }
 }
 
